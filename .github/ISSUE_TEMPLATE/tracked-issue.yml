@@ -1,0 +1,53 @@
+name: Tracked issue
+description: File work that has an owner and a next action. Issues are born triaged.
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Every tracked issue carries an owner, a next action, evidence, and a source.
+        A field routes; it never enforces — enforcement is credentials, protected branches and required checks.
+  - type: dropdown
+    id: owner
+    attributes:
+      label: Owner
+      description: Who owes the ratifier this item. Exactly one. Menu changes are an operator ruling.
+      options:
+        - operator
+        - integrator-seat
+        - lane-pool
+        - first-hire
+        - oddgeir
+    validations:
+      required: true
+  - type: input
+    id: next-action
+    attributes:
+      label: Next action
+      description: One imperative sentence, verb first. Not a description of the problem.
+      placeholder: "Exclude the maintenance lock from the template copy."
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: At least one URI or a pasted probe with the command that produced it. Never a paraphrase in place of a citation.
+      placeholder: "https://github.com/... (full-sha permalink preferred) or: $ cmd → output"
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source
+      description: The ratified source this traces to, or `found-during:<commission>` for a discovery.
+      placeholder: "found-during: #123"
+    validations:
+      required: true
+  - type: input
+    id: home-repo
+    attributes:
+      label: Home repo
+      description: Where the DoD is verified. Leave blank if that is this repo.
+    validations:
+      required: false
